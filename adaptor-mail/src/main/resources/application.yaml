@@ -1,0 +1,19 @@
+infra:
+  mail:
+    topics:
+      default:
+        title-template: 1
+        content-template: 1
+    servers:
+      default:
+        host: 127.0.0.1
+        port: 25
+        username: 1
+        password: 1
+        session-debug: true
+    points:
+      default:
+        sender: 1
+        recipient-to: 1
+        recipient-cc: 1
+        recipient-bcc: 1
