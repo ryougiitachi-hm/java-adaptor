@@ -10,6 +10,7 @@
     <modules>
         <module>adaptor-mail</module>
         <module>adaptor-app-port</module>
+        <module>adaptor-zookeeper</module>
     </modules>
 
     <properties>
@@ -29,6 +30,7 @@
         <spring.cloud.version>Hoxton.SR12</spring.cloud.version><!-- Hoxton.SR11/2020.0.5 -->
         <javax.activation-api.version>1.2.0</javax.activation-api.version>
         <javax.mail-api.version>1.6.2</javax.mail-api.version>
+        <apache.zookeeper.version>3.9.1</apache.zookeeper.version>
     </properties>
 
     <dependencyManagement>
@@ -97,6 +99,74 @@
                 <artifactId>javax.mail-api</artifactId>
                 <version>${javax.mail-api.version}</version>
             </dependency>
+            <!--  apache zookeeper -->
+            <dependency>
+                <!-- parent not bom -->
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>parent</artifactId>
+                <version>${apache.zookeeper.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${apache.zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <!-- Contrib projects to Apache ZooKeeper. -->
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper-contrib</artifactId>
+                <version>${apache.zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <!-- ZooInspector is a Java Swing based application for browsing and editing ZooKeeper instances. -->
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper-contrib-zooinspector</artifactId>
+                <version>${apache.zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <!-- ZooKeeper REST implementation using Jersey JAX-RS. -->
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper-contrib-rest</artifactId>
+                <version>${apache.zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <!-- LogGraph is an application for viewing and filtering zookeeper logs. It can handle transaction logs and message logs. -->
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper-contrib-loggraph</artifactId>
+                <version>${apache.zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <!-- Contrib projects to Apache ZooKeeper. -->
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper-contrib-fatjar</artifactId>
+                <version>${apache.zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <!-- ZooKeeper system tests. -->
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper-it</artifactId>
+                <version>${apache.zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <!-- ZooKeeper Prometheus.io Metrics Provider implementation -->
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper-prometheus-metrics</artifactId>
+                <version>${apache.zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <!-- ZooKeeper Metrics Providers. -->
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper-metrics-providers</artifactId>
+                <version>${apache.zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <!-- ZooKeeper jute. -->
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper-jute</artifactId>
+                <version>${apache.zookeeper.version}</version>
+            </dependency>
             <!-- current project -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -110,5 +180,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 </project>

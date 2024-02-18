@@ -1,0 +1,6 @@
+---
+infra:
+  svc:
+    zookeeper:
+      connection-string: 127.0.0.1:2181
+      session-timeout-ms: 10000
