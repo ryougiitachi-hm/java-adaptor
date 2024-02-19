@@ -2,6 +2,7 @@ package per.itachi.java.adaptor.zookeeper.joint.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,22 +20,34 @@ public class ZookeeperController {
     private ZookeeperPort zookeeperPort;
 
     @GetMapping("/nodes")
-    public void list(@RequestParam List<String> path) {
-        zookeeperPort.list("path");
+    public void listNodes(@RequestParam List<String> path) {
+        zookeeperPort.list(joinPathSegments(path));
     }
 
     @PostMapping("/nodes")
     public void createNode(@RequestParam List<String> path, @RequestParam String value) {
-        zookeeperPort.createNode("path");
+        zookeeperPort.createNode(joinPathSegments(path), value);
     }
 
     @DeleteMapping("/nodes")
     public void deleteNode(@RequestParam List<String> path) {
-        zookeeperPort.deleteNode("path");
+        zookeeperPort.deleteNode(joinPathSegments(path));
     }
 
     @PutMapping("/nodes")
     public void updateNode(@RequestParam List<String> path, @RequestParam String value) {
-        zookeeperPort.setNodeValue("path", value);
+        zookeeperPort.setNodeValue(joinPathSegments(path), value);
+    }
+
+    @GetMapping("/nodes/acls")
+    public void listNodeAcls(@RequestParam List<String> path) {
+        zookeeperPort.getNodeValue(joinPathSegments(path));
+    }
+
+    private String joinPathSegments(List<String> path) {
+        if (CollectionUtils.isEmpty(path)) {
+            return "/";
+        }
+        return "/" + String.join("/", path);
     }
 }

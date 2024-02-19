@@ -22,4 +22,8 @@ public class ZookeeperProperties {
 
     private String basePath;
 
+    /**
+     * Just for experimental and practice.
+     * */
+    private boolean enableWatcherForAction;
 }
