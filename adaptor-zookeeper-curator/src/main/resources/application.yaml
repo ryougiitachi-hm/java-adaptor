@@ -1,0 +1,14 @@
+---
+infra:
+  svc:
+    zk:
+      connection-string: 127.0.0.1:2181
+      connection-timeout-ms: 120000
+      session-timeout-ms: 120000
+      enable-watcher-for-action: true
+      retry-policy: EXPONENTIAL_BACKOFF_RETRY
+      retry-exponential-base-sleep-ms: 10000
+      retry-exponential-max-retries: 10
+      retry-exponential-max-sleep-ms: 90000
+      retry-forever-interval-ms: 15000
+

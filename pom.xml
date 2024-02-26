@@ -11,6 +11,7 @@
         <module>adaptor-mail</module>
         <module>adaptor-app-port</module>
         <module>adaptor-zookeeper</module>
+        <module>adaptor-zookeeper-curator</module>
     </modules>
 
     <properties>
@@ -31,6 +32,7 @@
         <javax.activation-api.version>1.2.0</javax.activation-api.version>
         <javax.mail-api.version>1.6.2</javax.mail-api.version>
         <apache.zookeeper.version>3.9.1</apache.zookeeper.version>
+        <apache.curator.version>5.6.0</apache.curator.version>
     </properties>
 
     <dependencyManagement>
@@ -101,7 +103,7 @@
             </dependency>
             <!--  apache zookeeper -->
             <dependency>
-                <!-- parent not bom -->
+                <!-- This is parent but not bom -->
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>parent</artifactId>
                 <version>${apache.zookeeper.version}</version>
@@ -167,6 +169,25 @@
                 <artifactId>zookeeper-jute</artifactId>
                 <version>${apache.zookeeper.version}</version>
             </dependency>
+            <!-- apache zookeeper curator, incubated from netflix-curator -->
+            <dependency>
+                <!-- Looks like apache-curator can be used as either parent or bom -->
+                <groupId>org.apache.curator</groupId>
+                <artifactId>apache-curator</artifactId>
+                <version>${apache.curator.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-test-zk35</artifactId>
+                <version>${apache.curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-test-zk36</artifactId>
+                <version>${apache.curator.version}</version>
+            </dependency>
             <!-- current project -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
@@ -178,6 +199,7 @@
                 <artifactId>adaptor-mail</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <!--  apache zookeeper curator -->
         </dependencies>
     </dependencyManagement>
 </project>
